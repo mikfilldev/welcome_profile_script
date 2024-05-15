@@ -53,7 +53,8 @@ print_row "Iptables" "$(systemctl show -p ActiveState --value "iptables")"
 print_row "Forward status" "$(sysctl net.ipv4.ip_forward)"
 
 echo ""
-
+echo -e "${yellow}Users with Bash shell: ${reset}"
+echo -e "$(awk -F: '/bash/{print $1}' /etc/passwd)"
 echo -e "${yellow}PATH env: ${reset}" 
 echo -e "$(printenv | grep PATH)"
 echo -e "${yellow}SSH params: ${reset}" 
